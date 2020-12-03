@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/global.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: MyHomePage(title: 'ToDo App'),
     );
@@ -45,40 +46,64 @@ class _MyHomePageState extends State<MyHomePage> {
         child: DefaultTabController(
           length: 3,
           child: new Scaffold(
-            body: Stack(
-              children: <Widget>[
-                TabBarView(
-                  children: [
-                    new Container(
-                      color: Colors.grey,
-                    ),
-                    new Container(
-                      color: Colors.blueGrey,
-                    ),
-                    new Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/TSC_Hansa_50_Logo_klein.jpg'),
-                          fit: BoxFit.contain,
-                          //  colorFilter: new ColorFilter.mode( Colors.blue.withOpacity(0.5), BlendMode.dst)
-                        ),
-                        shape: BoxShape.circle,
+            body: Stack(children: <Widget>[
+              TabBarView(
+                children: [
+                  new Container(
+                    color: darkGreyColor,
+                  ),
+                  new Container(
+                    color: Colors.blueGrey,
+                  ),
+                  new Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/images/TSC_Hansa_50_Logo_klein.jpg'),
+                        fit: BoxFit.contain,
+                        //  colorFilter: new ColorFilter.mode( Colors.blue.withOpacity(0.5), BlendMode.dst)
                       ),
+                      shape: BoxShape.circle,
                     ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 50),
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50),
+                      bottomRight: Radius.circular(50)),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "Intray",
+                      style: intrayTitleStyle,
+                    ),
+                    Container()
                   ],
                 ),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30)),
-                    color: Colors.purple,
+              ),
+              Container(
+                height: 80,
+                width: 80,
+                margin: EdgeInsets.only(
+                    top: 110,
+                    left: MediaQuery.of(context).size.width * 0.5 - 40),
+                child: FloatingActionButton(
+                  child: Icon(
+                    Icons.add,
+                    size: 70,
                   ),
-                )
-              ],
-            ),
+                  backgroundColor: Colors.red,
+                  onPressed: () {},
+                ),
+              )
+            ]),
             appBar: new AppBar(
               elevation: 0,
               title: new TabBar(
@@ -93,12 +118,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: new Icon(Icons.calendar_today_rounded),
                   ),
                 ],
-                labelColor: Colors.white,
+                labelColor: darkGreyColor,
                 unselectedLabelColor: Colors.blue,
                 indicatorSize: TabBarIndicatorSize.label,
                 indicatorPadding: EdgeInsets.all(5.0),
+                indicatorColor: Colors.transparent,
               ),
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.white,
             ),
           ),
         ),
