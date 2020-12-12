@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/UI/Intray/Intray_page.dart';
 import 'models/global.dart';
 
 void main() {
@@ -49,9 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             body: Stack(children: <Widget>[
               TabBarView(
                 children: [
-                  new Container(
-                    color: darkGreyColor,
-                  ),
+                  IntrayPage(),
                   new Container(
                     color: Colors.blueGrey,
                   ),
@@ -99,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.add,
                     size: 70,
                   ),
-                  backgroundColor: Colors.red,
+                  backgroundColor: redColor,
                   onPressed: () {},
                 ),
               )
@@ -132,43 +131,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-/*
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
-              ],
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorPadding: EdgeInsets.all(5.0),
-            ),
-            title: Text('Todo App'),
-          ),
-          body: TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/
